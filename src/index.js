@@ -1,15 +1,16 @@
+/*eslint-disable no-unused-vars*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
 
-import './index.css';
+import Layout from './pages/layout';
+/*eslint-enable no-unused-vars*/
 
-import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Layout />
   </BrowserRouter>,
   document.getElementById('root')
 );
