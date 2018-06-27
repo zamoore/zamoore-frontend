@@ -3,25 +3,31 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 /*eslint-enable no-unused-vars*/
 
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions';
 
-class SignIn extends Component {
+const mapStateToProps = (state) => {
+  return { isAuthenticated: state.isAuthenticated };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return { signIn: (credentials) => dispatch(signIn(credentials)) };
+};
+
+class ConnectedSignIn extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      authenticated: !!localStorage.getItem('authToken'),
-      error: null
-    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   render() {
-    if (this.state.authenticated === true) {
+    if (this.props.isAuthenticated === true) {
       return (<Redirect to="/" />);
     }
 
     return (
       <section className="SignIn">
-        <form onSubmit={this.signIn.bind(this)}>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input type="email" name="email" id="email" />
@@ -35,20 +41,18 @@ class SignIn extends Component {
       </section>
     );
   }
-  async signIn(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
 
-    let formData = new FormData(e.target);
+    let formData = new FormData(event.target);
 
-    try {
-      let resp = await axios.post('http://localhost:8080/api/auth', formData);
-
-      localStorage.setItem('authToken', resp.data);
-      this.setState({ authenticated: true });
-    } catch(reason) {
-      this.setState({ error: reason.message });
-    }
+    this.props.signIn({
+      email: formData.get('email'),
+      password: formData.get('password')
+    });
   }
 }
+
+const SignIn = connect(mapStateToProps, mapDispatchToProps)(ConnectedSignIn);
 
 export default SignIn;

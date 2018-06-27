@@ -7,8 +7,6 @@ import Home from '../../home';
 import Article from '../../article';
 import SignIn from '../../sign-in';
 
-import './styles.css';
-
 class Main extends Component {
   render() {
     return (

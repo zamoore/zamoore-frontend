@@ -1,17 +1,22 @@
 /*eslint-disable no-unused-vars*/
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import Layout from './pages/layout';
+import App from './app';
+import store from './store';
 /*eslint-enable no-unused-vars*/
 
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Layout />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
+
 registerServiceWorker();

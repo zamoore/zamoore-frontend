@@ -1,14 +1,14 @@
 /*eslint-disable no-unused-vars*/
 import React, { Component } from 'react';
 
-import Header from './header';
-import Main from './main';
+import Header from '../pages/layout/header';
+import Main from '../pages/layout/main';
 /*eslint-enable no-unused-vars*/
 
-class Layout extends Component {
+class App extends Component {
   render() {
     return (
-      <div className='Layout'>
+      <div className='App'>
         <Header />
         <Main />
       </div>
@@ -16,4 +16,4 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default App;

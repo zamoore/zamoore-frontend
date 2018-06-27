@@ -3,33 +3,34 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 /*eslint-enable no-unused-vars*/
 
-import './styles.css';
+import { connect } from 'react-redux';
+import { signOut } from '../../../actions';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
+const mapStateToProps = (state) => {
+  return { isAuthenticated: state.isAuthenticated };
+};
 
-    this.state = {
-      authenticated: !!localStorage.getItem('authToken')
-    };
-  }
+const mapDispatchToProps = (dispatch) => {
+  return { signOut: () => dispatch(signOut()) };
+};
+
+class ConnectedHeader extends Component {
   render() {
+    let authButton = this.props.isAuthenticated
+      ? (<button type="button" onClick={this.props.signOut}>Sign Out</button>)
+      : (<Link to='/signin'>Sign In</Link>);
+
     return (
       <header className="Header">
         <nav>
           <Link to='/'>Home</Link>
-          {this.state.authenticated === true &&
-            <button type="button" onClick={this.signOut.bind(this)}>Sign Out</button>
-          }
-          <Link to='/signin'>Sign In</Link>
+          {authButton}
         </nav>
       </header>
     );
   }
-  signOut() {
-    localStorage.removeItem('authToken');
-    this.setState({ authenticated: false });
-  }
 }
+
+const Header = connect(mapStateToProps, mapDispatchToProps)(ConnectedHeader);
 
 export default Header;
