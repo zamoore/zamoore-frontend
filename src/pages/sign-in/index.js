@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { signIn } from '../../actions';
 
 const mapStateToProps = (state) => {
-  return { isAuthenticated: state.isAuthenticated };
+  return { isAuthenticated: state.currentUser.isAuthenticated };
 };
 
 const mapDispatchToProps = (dispatch) => {

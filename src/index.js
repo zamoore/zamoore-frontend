@@ -8,6 +8,8 @@ import App from './app';
 import store from './store';
 /*eslint-enable no-unused-vars*/
 
+import 'normalize.css';
+
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(

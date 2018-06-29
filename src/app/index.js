@@ -5,6 +5,8 @@ import Header from '../pages/layout/header';
 import Main from '../pages/layout/main';
 /*eslint-enable no-unused-vars*/
 
+import './styles.css';
+
 class App extends Component {
   render() {
     return (

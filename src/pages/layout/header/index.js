@@ -7,7 +7,10 @@ import { connect } from 'react-redux';
 import { signOut } from '../../../actions';
 
 const mapStateToProps = (state) => {
-  return { isAuthenticated: state.isAuthenticated };
+  return {
+    isAuthenticated: state.currentUser.isAuthenticated,
+    userName: state.currentUser.name
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -24,8 +27,12 @@ class ConnectedHeader extends Component {
       <header className="Header">
         <nav>
           <Link to='/'>Home</Link>
+          <Link to='/articles'>Blog</Link>
           {authButton}
         </nav>
+        {this.props.userName !== undefined &&
+          <span>{this.props.userName}</span>
+        }
       </header>
     );
   }
