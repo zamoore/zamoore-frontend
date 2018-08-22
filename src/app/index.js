@@ -10,12 +10,12 @@ import Blog from '../components/containers/blog';
 import Article from '../components/containers/article';
 
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 `;
 
 const StyledApp = styled.section`
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
 `;
 /*eslint-enable no-unused-vars*/
 

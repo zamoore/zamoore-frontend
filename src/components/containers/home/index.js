@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 import Header from '../../presentational/header';
 import Hero from '../../presentational/hero';
-import About from '../../presentational/about';
-import Contact from '../../presentational/contact';
 
 const StyledHome = styled.section`
 
@@ -18,8 +16,6 @@ class Home extends Component {
       <StyledHome className='Home'>
         <Header />
         <Hero />
-        <About />
-        <Contact />
       </StyledHome>
     );
   }
