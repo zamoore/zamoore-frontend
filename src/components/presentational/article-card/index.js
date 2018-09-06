@@ -30,8 +30,9 @@ const StyledArticleCard = styled.li`
 
 const ArticleCard = (props) => (
   <StyledArticleCard className='ArticleCard'>
-    <h2>{props.name}</h2>
-    <p>Lore ipsum whatever</p>
+    <h2>{props.title}</h2>
+    <p>{props.category}</p>
+    <p>{props.preview}</p>
   </StyledArticleCard>
 );
 

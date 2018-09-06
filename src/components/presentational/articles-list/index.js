@@ -4,11 +4,7 @@ import styled from 'styled-components';
 
 import ArticleCard from '../article-card';
 
-import { row } from '../../../styles/utils';
-
 const StyledArticlesList = styled.section`
-  ${row}
-
   .articles-list {
     border-left: 2px solid #29a2dd;
     list-style-type: none;
@@ -21,7 +17,7 @@ const ArticlesList = (props) => (
   <StyledArticlesList className='ArticlesList'>
     <ul className='articles-list'>
       {props.articles.map((article) =>
-        <ArticleCard name={article.name} />
+        <ArticleCard title={article.title} preview={article.preview} category={article.category} />
       )}
     </ul>
   </StyledArticlesList>
