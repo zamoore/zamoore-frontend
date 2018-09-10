@@ -35,7 +35,7 @@ class Home extends Component {
     );
   }
   componentDidMount() {
-    store.dispatch(getArticles('https://zamoore-api.herokuapp.com/api/articles'));
+    store.dispatch(getArticles());
   }
 }
 

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { queryArticles, findArticle } from '../api';
 
 export const articlesErrored = (bool, error) => {
   return {
@@ -22,16 +22,30 @@ export const articlesLoaded = (articles) => {
   };
 };
 
-export const getArticles = (url) => {
+export const getArticles = () => {
   return async (dispatch) => {
-    let response;
-
     dispatch(articlesLoading(true));
 
     try {
-      response = await axios.get(url);
+      let { data: articles } = await queryArticles();
 
-      dispatch(articlesLoaded(response.data));
+      dispatch(articlesLoaded(articles));
+    } catch(reason) {
+      dispatch(articlesErrored(true, reason));
+    }
+
+    dispatch(articlesLoading(false));
+  };
+};
+
+export const getArticleById = () => {
+  return async (dispatch) => {
+    dispatch(articlesLoading(true));
+
+    try {
+      let { data: articles } = await queryArticles();
+
+      dispatch(articlesLoaded(articles));
     } catch(reason) {
       dispatch(articlesErrored(true, reason));
     }

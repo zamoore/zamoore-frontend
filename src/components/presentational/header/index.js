@@ -43,10 +43,10 @@ const Header = (/* props */) => (
       <Link to='/'>zm</Link>
     </h1>
     <nav className='primary-nav'>
-      <a href='https://github.com/zamoore' target='_blank' className='primary-nav-item'>
+      <a href='https://github.com/zamoore' target='_blank' rel='noopener noreferrer' className='primary-nav-item'>
         <Icon icon={faGithub} size='lg' />
       </a>
-      <a href='https://www.linkedin.com/in/zachary-moore-0a571b79/' target='_blank' className='primary-nav-item'>
+      <a href='https://www.linkedin.com/in/zachary-moore-0a571b79/' target='_blank' rel='noopener noreferrer' className='primary-nav-item'>
         <Icon icon={faLinkedinIn} size='lg' />
       </a>
       <a href='mailto:zack.moore89@gmail.com' className='primary-nav-item'>

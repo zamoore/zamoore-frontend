@@ -7,7 +7,6 @@ import theme from './theme';
 
 // Containers
 import Home from '../home';
-import Blog from '../blog';
 import Article from '../article';
 
 // Presentational
@@ -55,8 +54,7 @@ class App extends Component {
         <StyledApp>
           <Header />
           <Route exact path='/' component={Home} />
-          <Route path='/blog' component={Blog} />
-          <Route path='/article' component={Article} />
+          <Route path='/articles/:articleId' component={Article} />
         </StyledApp>
       </ThemeProvider>
     );

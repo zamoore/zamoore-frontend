@@ -29,11 +29,13 @@ const StyledArticleCard = styled.li`
 /*eslint-enable no-unused-vars*/
 
 const ArticleCard = (props) => (
-  <StyledArticleCard className='ArticleCard'>
-    <h2>{props.title}</h2>
-    <p>{props.category}</p>
-    <p>{props.preview}</p>
-  </StyledArticleCard>
+  <Link to={`/articles/${props.id}`}>
+    <StyledArticleCard className='ArticleCard'>
+      <h2>{props.title}</h2>
+      <p>{props.category}</p>
+      <p>{props.preview}</p>
+    </StyledArticleCard>
+  </Link>
 );
 
 export default ArticleCard;
