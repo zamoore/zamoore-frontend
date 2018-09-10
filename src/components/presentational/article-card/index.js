@@ -29,11 +29,16 @@ const StyledArticleCard = styled.li`
 /*eslint-enable no-unused-vars*/
 
 const ArticleCard = (props) => (
-  <Link to={`/articles/${props.id}`}>
+  <Link to={{
+    pathname: `/articles/${props.article.id}`,
+    state: {
+      article: props.article
+    }
+  }}>
     <StyledArticleCard className='ArticleCard'>
-      <h2>{props.title}</h2>
-      <p>{props.category}</p>
-      <p>{props.preview}</p>
+      <h2>{props.article.title}</h2>
+      <p>{props.article.category}</p>
+      <p>{props.article.preview}</p>
     </StyledArticleCard>
   </Link>
 );

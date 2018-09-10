@@ -1,9 +1,15 @@
 import initialState from '../initial-state';
 
-const articleReducer = (state = initialState.articles, action) => {
+const articleReducer = (state = initialState.article, action) => {
   switch(action.type) {
-  case 'ARTICLES_LOADED':
-    return action.payload.articles;
+  case 'ARTICLE_LOADING':
+    return Object.assign({}, state, {
+      loading: action.payload.loading
+    });
+  case 'ARTICLE_LOADED':
+    return Object.assign({}, state, {
+      article: action.payload.article
+    });
   default:
     return state;
   }

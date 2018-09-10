@@ -9,7 +9,7 @@ import ArticlesList from '../../presentational/articles-list';
 
 // Redux
 import store from '../../../store';
-import { getArticles } from '../../../actions';
+import { getArticles } from '../../../actions/articles';
 
 // Style utils
 import { row } from '../../../styles/utils';
@@ -39,6 +39,6 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ articles: state.articles });
+const mapStateToProps = (state) => ({ articles: state.articles.articles });
 
 export default connect(mapStateToProps)(Home);

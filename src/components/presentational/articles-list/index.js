@@ -18,10 +18,7 @@ const ArticlesList = (props) => (
     <ul className='articles-list'>
       {props.articles.map((article) =>
         <ArticleCard
-          title={article.title}
-          preview={article.preview}
-          category={article.category}
-          id={article.id}
+          article={article}
           key={article.id}
         />
       )}

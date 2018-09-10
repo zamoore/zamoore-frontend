@@ -1,3 +1,12 @@
 export default {
-  articles: []
+  article: {
+    article: {},
+    loading: false,
+    error: null
+  },
+  articles: {
+    articles: [],
+    loading: false,
+    error: null
+  }
 };

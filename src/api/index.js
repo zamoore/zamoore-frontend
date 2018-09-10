@@ -10,3 +10,7 @@ let envToBaseUrlMap = {
 export const queryArticles = (params = {}) => {
   return axios.get(`${envToBaseUrlMap[process.env.NODE_ENV]}/articles`, params);
 };
+
+export const findArticle = (articleId, params = {}) => {
+  return axios.get(`${envToBaseUrlMap[process.env.NODE_ENV]}/articles/${articleId}`, params);
+};
