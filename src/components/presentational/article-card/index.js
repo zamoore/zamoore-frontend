@@ -2,14 +2,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import moment from 'moment';
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
+import { faJsSquare } from '@fortawesome/free-brands-svg-icons';
+
+import { materialShadow } from '../../../styles/utils';
 
 const StyledArticleCard = styled.li`
+  ${materialShadow(1)}
+
   background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 8px;
+  border-top: 6px solid #E34153;
   margin-bottom: 20px;
   padding: 20px;
   position: relative;
+  transition: all .3s;
 
   &:before {
     content: "";
@@ -25,7 +33,45 @@ const StyledArticleCard = styled.li`
   &:last-of-type {
     margin-bottom: 0;
   }
+
+  &:hover {
+    ${materialShadow(2)}
+
+    &:before {
+      background-color: #E34153;
+    }
+  }
+
+  .header {
+    display: flex;
+    margin-bottom: 20px;
+
+    .title-container {
+      flex-grow: 1;
+    }
+    .title {
+      font-weight: 500;
+      margin: 0;
+    }
+    .byline {
+      color: #8e8e8e;
+      font-weight: 300;
+      font-size: 14px;
+      margin-bottom: 0;
+      margin-top: 5px;
+    }
+    .byline-date {
+      text-transform: lowercase;
+    }
+    svg {
+      color: #E34153;
+    }
+  }
 `;
+
+const categoryToIconMap = {
+  js: faJsSquare
+};
 /*eslint-enable no-unused-vars*/
 
 const ArticleCard = (props) => (
@@ -36,8 +82,15 @@ const ArticleCard = (props) => (
     }
   }}>
     <StyledArticleCard className='ArticleCard'>
-      <h2>{props.article.title}</h2>
-      <p>{props.article.category}</p>
+      <header className='header'>
+        <div className='title-container'>
+          <h2 className='title'>{props.article.title}</h2>
+          <p className='byline'>
+            Written by {props.article.author.username}, <span className='byline-date'>{moment(props.article.createdAt).calendar()}</span>.
+          </p>
+        </div>
+        <Icon icon={categoryToIconMap[props.article.category]} size='lg' />
+      </header>
       <p>{props.article.preview}</p>
     </StyledArticleCard>
   </Link>

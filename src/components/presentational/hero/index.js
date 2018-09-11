@@ -12,6 +12,7 @@ const StyledHero = styled.section`
   margin-bottom: 50px;
 
   .hero-title {
+    font-weight: 500;
     margin-bottom: 20px;
     margin-top: 0;
   }
