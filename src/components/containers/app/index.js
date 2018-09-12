@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
-import theme from './theme';
+import theme from '../../../styles/theme';
 
 // Containers
 import Home from '../home';

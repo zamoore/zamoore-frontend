@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import showdown from 'showdown';
+import sanitize from 'sanitize-html';
 import _ from 'lodash';
 
 // Redux
@@ -11,6 +13,8 @@ import { getArticleById, articleLoaded } from '../../../actions/articles';
 // Style utils
 import { row } from '../../../styles/utils';
 
+const converter = new showdown.Converter();
+
 const StyledArticle = styled.section`
   ${row}
 `;
@@ -18,15 +22,16 @@ const StyledArticle = styled.section`
 
 class Article extends Component {
   render() {
-    if (this.props.loading) {
+    let body = converter.makeHtml(this.props.article.body);
+    let sanitizedBody = sanitize(body);
+
+    if (this.props.loading && this.props.article) {
       return (<h1>Loading...</h1>);
     } else {
       return (
         <StyledArticle className='Article'>
           <h1>{this.props.article.title}</h1>
-          <div>
-            {this.props.article.body}
-          </div>
+          <div dangerouslySetInnerHTML={{__html: sanitizedBody}} />
         </StyledArticle>
       );
     }
