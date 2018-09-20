@@ -6,11 +6,7 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
-import { row } from '../../../styles/utils';
-
 const StyledHeader = styled.header`
-  ${row}
-
   align-items: center;
   display: flex;
   margin-bottom: 20px;
@@ -38,7 +34,7 @@ const StyledHeader = styled.header`
 /*eslint-enable no-unused-vars*/
 
 const Header = (/* props */) => (
-  <StyledHeader className='Header'>
+  <StyledHeader className='Header row'>
     <h1 className='branding'>
       <Link to='/'>zm</Link>
     </h1>

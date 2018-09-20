@@ -5,18 +5,24 @@ import styled from 'styled-components';
 import showdown from 'showdown';
 import sanitize from 'sanitize-html';
 import _ from 'lodash';
+import moment from 'moment';
 
 // Redux
 import store from '../../../store';
 import { getArticleById, articleLoaded } from '../../../actions/articles';
 
-// Style utils
-import { row } from '../../../styles/utils';
+// Styles
+import { materialShadow } from '../../../styles/utils';
 
 const converter = new showdown.Converter();
 
 const StyledArticle = styled.section`
-  ${row}
+  margin-top: 50px;
+
+  .article-header {
+    border-bottom: 4px solid #E34153;
+    margin-bottom: 20px;
+  }
 `;
 /*eslint-enable no-unused-vars*/
 
@@ -25,14 +31,21 @@ class Article extends Component {
     let body = converter.makeHtml(this.props.article.body);
     let sanitizedBody = sanitize(body);
 
-    if (this.props.loading && this.props.article) {
+    if (this.props.loading) {
       return (<h1>Loading...</h1>);
     } else {
       return (
-        <StyledArticle className='Article'>
-          <h1>{this.props.article.title}</h1>
-          <div dangerouslySetInnerHTML={{__html: sanitizedBody}} />
-        </StyledArticle>
+        <div className='row'>
+          <StyledArticle className='Article'>
+            <header className='article-header'>
+              <h2>{this.props.article.title}</h2>
+              <p className='byline'>
+                Written by {this.props.article.author && this.props.article.author.username}, <span className='byline-date'>{moment(this.props.article.createdAt).calendar()}</span>.
+              </p>
+            </header>
+            <div dangerouslySetInnerHTML={{__html: sanitizedBody}} />
+          </StyledArticle>
+        </div>
       );
     }
   }

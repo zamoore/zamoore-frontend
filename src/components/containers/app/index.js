@@ -28,6 +28,12 @@ injectGlobal`
       outline: none;
     }
   }
+
+  .row {
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 0 40px;
+  }
 `;
 
 const StyledApp = styled.section`

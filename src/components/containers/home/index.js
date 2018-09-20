@@ -11,11 +11,8 @@ import ArticlesList from '../../presentational/articles-list';
 import store from '../../../store';
 import { getArticles } from '../../../actions/articles';
 
-// Style utils
-import { row } from '../../../styles/utils';
-
 const StyledHome = styled.section`
-  ${row}
+
 `;
 /*eslint-enable no-unused-vars*/
 
@@ -24,7 +21,7 @@ class Home extends Component {
     let { articles } = this.props;
 
     return (
-      <StyledHome className='Home'>
+      <StyledHome className='Home row'>
         <Hero />
         {articles.length > 0 ? (
           <ArticlesList articles={this.props.articles} />
